@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 7
+  - stable
 cache: 
   # 下次再次 触发，就不需要重新安装所有的 node_modules
   directories: 
