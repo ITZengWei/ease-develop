@@ -1,0 +1,303 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="开始/Introduction" />
+
+<style>{`
+  .subheading {
+    --mediumdark: '#999999';
+    font-weight: 900;
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 6px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+  .card {
+    margin-bottom: 24px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 12px #ebedf0;
+  }
+  .card .title {
+    font-size: 15px;
+  }
+  .card code {
+    position: relative;
+    margin-top: 15px;
+    display: block;
+    padding: 16px;
+    overflow-x: auto;
+    color: #58727e;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+    line-height: 26px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    -webkit-font-smoothing: auto;
+    background-color: #fafafa;
+    border-radius: 16px;
+  }
+
+  .link-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  @media (min-width: 620px) {
+    .link-list {
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+  .link-list {
+      display: -ms-grid;
+      -ms-grid-columns: 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr;
+    }
+  }
+
+  .link-item {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 5px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .link-item:hover {
+    border-color: #1EA7FD50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  .link-item:active {
+    border-color: #1EA7FD;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .link-item strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .link-item img {
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    flex: none;
+  }
+
+  .link-item span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .tip {
+    display: inline-block;
+    border-radius: 1em;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 700;
+    background: #E7FDD8;
+    color: #66BF3C;
+    padding: 4px 12px;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  .tip-wrapper {
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .tip-wrapper code {
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  
+`}</style>
+
+# 欢迎来到我的 smalllb 组件库
+
+这个 UI 组件库是 通过 React + Hooks + TypeScript + Storybook 联合打造的 
+一起开始奇妙之旅吧
+
+
+<div className="subheading">安装</div>
+
+
+<div className="card">
+  <h3 class="title">通过 npm 安装</h3>
+  <pre>
+    <code>
+      <span>
+        <strong>cnpm install smalllb -S</strong>
+      </span>
+    </code>  
+  </pre>
+</div>
+
+<div className="subheading">使用</div>
+
+
+<div className="card">
+  <h3 class="title">导入组件以及样式</h3>
+  <pre>
+    <code>
+      <span>
+        <strong>import smalllb from 'smalllb'</strong><br />  
+        <strong>import 'smalllb/dist/css'</strong>
+      </span>
+    </code>  
+  </pre>
+</div>
+
+<div className="subheading">主要功能组件预览</div>
+
+<div className="link-list">
+  <a className="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
+    <img src={Plugin} alt="plugin" />
+    <span>
+      <strong>Button</strong>
+      页面中最常用的的按钮元素，适合于完成特定的交互，支持 HTML button 和 a 链接 的所有属性
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="https://storybook.js.org/docs/react/configure/webpack"
+    target="_blank"
+  >
+    <img src={StackAlt} alt="Build" />
+    <span>
+      <strong>Alert</strong>
+      用于页面中展示重要的提示信息。 点击右侧的叉提示自动消失
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="https://storybook.js.org/docs/react/configure/styling-and-css"
+    target="_blank"
+  >
+    <img src={Colors} alt="colors" />
+    <span>
+      <strong>Menu</strong>
+      为网站提供导航功能的菜单。支持横向纵向两种模式，支持下拉菜单。
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack"
+    target="_blank"
+  >
+    <img src={Flow} alt="flow" />
+    <span>
+      <strong>Tabs</strong>
+      选项卡切换组件。 提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
+    </span>
+  </a>
+
+  <a className="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
+    <img src={Plugin} alt="plugin" />
+    <span>
+      <strong>Icon</strong>
+      提供了一套常用的图标集合 基于 react-fontawesome。
+    </span>
+  </a>
+
+  <a className="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
+    <img src={Plugin} alt="plugin" />
+    <span>
+      <strong>Input</strong>
+      复杂多变的 Input
+    </span>
+  </a>
+
+  
+  <a className="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
+    <img src={Plugin} alt="plugin" />
+    <span>
+      <strong>AutoComplete</strong>
+      自动补全组件
+    </span>
+  </a>
+
+   <a className="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
+    <img src={Plugin} alt="plugin" />
+    <span>
+      <strong>Select</strong>
+      下拉框组件
+    </span>
+  </a>
+
+
+  <a className="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
+    <img src={Plugin} alt="plugin" />
+    <span>
+      <strong>Upload</strong>
+      上传组件
+    </span>
+  </a>
+</div>
+
+
+<div className="subheading">技术文档</div>
+
+
+<div className="link-list">
+ 
+  <a className="link-item" href="https://www.learnstorybook.com" target="_blank">
+    <img src={Direction} alt="direction" />
+    <span>
+      <strong>React with Hooks</strong>
+      Best practices from leading teams
+    </span>
+  </a>
+  <a className="link-item" href="https://github.com/storybookjs/storybook" target="_blank">
+    <img src={Code} alt="code" />
+    <span>
+      <strong>TypeScript</strong>
+      View the source and add issues
+    </span>
+  </a>
+
+ <a className="link-item" href="https://storybook.js.org/docs" target="_blank">
+    <img src={Repo} alt="repo" />
+    <span>
+      <strong>Storybook documentation</strong>
+      Configure, customize, and extend
+    </span>
+  </a>
+
+  <a className="link-item" href="https://discord.gg/UUt2PJb" target="_blank">
+    <img src={Comments} alt="comments" />
+    <span>
+      <strong>SASS</strong>
+      Chat with maintainers and the community
+    </span>
+  </a>
+</div>
+
