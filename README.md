@@ -50,3 +50,7 @@
     // ...
   }
 ```
+
+## CI/CD 的使用 
+
+> 持续集成，持续交付使用 参考文档: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
