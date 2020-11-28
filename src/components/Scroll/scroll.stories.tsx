@@ -1,8 +1,21 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
+// 如果您可以处理6.1中的破坏更改，也可以从'@storybook/react'导出
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Scroll } from './components/Scroll/scroll'
+/* 导入组件 */
+import { Scroll, ScrollProps } from './scroll'
 
-export const App: FC = function (props) {
+
+/* 导出展示组件 */
+export default {
+  title: '功能组件/Scroll',
+  component: Scroll,
+  argTypes: {
+  }
+} as Meta
+
+// 默认按钮
+export const BasicScroll: Story<ScrollProps> = (props) => {
 
   const [lineCount, setLineCount] = useState(15)
 
@@ -10,8 +23,19 @@ export const App: FC = function (props) {
 
   const [pullDownLoading, setPullDownLoading] = useState(false)
 
+  const {
+    onScroll,
+    pullDown,
+    pullUp
+  } = props
+
+  const handleScroll = (...args: any []) => {
+    onScroll && onScroll()
+    console.log(args)
+  }
 
   const handlePullDown = (...args: any []) => {
+    pullDown && pullDown()
     console.log(args)
     setPullDownLoading(true)
     setLineCount(5)
@@ -21,16 +45,18 @@ export const App: FC = function (props) {
   }
 
   const handlePullUp = (...args: any []) => {
+    pullUp && pullUp()
     console.log(args)
     setPullUpLoading(true)
     setLineCount(count => count + 5)
-    setPullUpLoading(false) 
+    setPullUpLoading(false)
   }
 
 
   return (
     <div className="wrapper" style={{ height: '100vh' }}>
       <Scroll 
+        onScroll={ handleScroll }
         pullDown={ handlePullDown }
         pullUp={ handlePullUp }
         pullDownLoading={ pullDownLoading }
@@ -51,5 +77,3 @@ export const App: FC = function (props) {
     
   )
 }
-
-export default App

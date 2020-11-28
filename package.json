@@ -11,6 +11,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "better-scroll": "^2.0.5",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
     "eslint": "^7.14.0",
@@ -28,9 +29,9 @@
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "prepublishOnly": "npm run build",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "husky": {
     "hooks": {
@@ -61,6 +62,8 @@
     "@storybook/addon-links": "^6.1.8",
     "@storybook/node-logger": "^6.1.8",
     "@storybook/preset-create-react-app": "^3.1.5",
-    "@storybook/react": "^6.1.8"
+    "@storybook/react": "^6.1.8",
+    "@types/better-scroll": "^1.12.3",
+    "node-sass": "^4.0.0"
   }
 }
