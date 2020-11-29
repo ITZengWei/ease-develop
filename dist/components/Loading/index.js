@@ -4,4 +4,3 @@ var TransLoading = Loading;
 TransLoading.Ripple = RippleLoading;
 TransLoading.JumpMusic = JumpMusicLoading;
 export default TransLoading;
-//# sourceMappingURL=index.js.map

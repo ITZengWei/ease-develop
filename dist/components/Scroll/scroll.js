@@ -146,4 +146,3 @@ Scroll.defaultProps = {
 };
 Scroll.displayName = 'Scroll';
 export default Scroll;
-//# sourceMappingURL=scroll.js.map

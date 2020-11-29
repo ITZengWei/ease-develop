@@ -62,4 +62,3 @@ Loading.defaultProps = {
     innerType: 'ripple'
 };
 export default Loading;
-//# sourceMappingURL=loading.js.map

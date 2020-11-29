@@ -4,4 +4,3 @@ export * as Tools from './utils/tools';
 export { default as Scroll } from './components/Scroll';
 /** 导出Loading组件 */
 export { default as Loading } from './components/Loading';
-//# sourceMappingURL=index.js.map

@@ -30,4 +30,3 @@ export var throttle = function (handle, delay) {
         }
     };
 };
-//# sourceMappingURL=tools.js.map
