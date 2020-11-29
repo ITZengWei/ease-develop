@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 
 import { Scroll } from './components/Scroll/scroll'
-
+                                                                        
 export const App: FC = function (props) {
 
   const [lineCount, setLineCount] = useState(15)
