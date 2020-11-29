@@ -5,7 +5,6 @@ export const debounce: throttleAndDebounceProps = (handle: Function, delay: numb
 	let timer: any = null
 
 	return function (...args: any []) {
-		console.log(delay, 'trigger');
 		
 		// todo this 怎么定义
 		clearTimeout(timer)

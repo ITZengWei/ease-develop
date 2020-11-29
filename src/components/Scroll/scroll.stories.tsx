@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // 如果您可以处理6.1中的破坏更改，也可以从'@storybook/react'导出
 import { Story, Meta } from '@storybook/react/types-6-0'
+import { action } from '@storybook/addon-actions'
 
 /* 导入组件 */
 import { Scroll, ScrollProps } from './scroll'
@@ -11,6 +12,9 @@ export default {
   title: '功能组件/Scroll',
   component: Scroll,
   argTypes: {
+    onScroll: { control: null },
+    pullDown: { control: null },
+    pullUp: { control: null },
   }
 } as Meta
 
@@ -31,30 +35,39 @@ export const BasicScroll: Story<ScrollProps> = (props) => {
 
   const handleScroll = (...args: any []) => {
     onScroll && onScroll()
-    console.log(args)
+    action('scrolling')()
   }
 
   const handlePullDown = (...args: any []) => {
     pullDown && pullDown()
-    console.log(args)
     setPullDownLoading(true)
-    setLineCount(5)
 
-    setPullDownLoading(false)
+    action('刷新成功')()
+
+    // 延迟设置
+    setTimeout(() => {
+      setLineCount(15)
+
+      setPullDownLoading(false)
+    }, 2000)
 
   }
 
   const handlePullUp = (...args: any []) => {
     pullUp && pullUp()
-    console.log(args)
+    action('加载更多')()
     setPullUpLoading(true)
-    setLineCount(count => count + 5)
-    setPullUpLoading(false)
+    
+    // 延迟设置
+    setTimeout(() => {
+      setLineCount(count => count + 5)
+      setPullUpLoading(false)
+    }, 2000)
   }
 
 
   return (
-    <div className="wrapper" style={{ height: '100vh' }}>
+    <div className="wrapper" style={{ height: '100vh', padding: 30, boxSizing: 'border-box', position: 'relative' }}>
       <Scroll 
         onScroll={ handleScroll }
         pullDown={ handlePullDown }
@@ -77,3 +90,5 @@ export const BasicScroll: Story<ScrollProps> = (props) => {
     
   )
 }
+
+BasicScroll.storyName = '基础用法'

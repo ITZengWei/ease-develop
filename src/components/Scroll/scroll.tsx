@@ -12,6 +12,9 @@ import React, {
 import BScroll from 'better-scroll'
 /** 引入 防抖函数 */
 import { debounce } from '../../utils/tools'
+/** 引入 加载组件 */
+import Loading from '../Loading'
+
 
 /** 回调函数类型 */
 type handleCallback = Function | null 
@@ -44,6 +47,15 @@ export interface ScrollProps {
 /** better-scroll 类型 */
 type BScrollType = BScroll | null
 
+/**
+ * ### 加载组件 导入方式
+ * 
+ * > 依赖与 better-scroll 库 其他属性可以参考文档: xxx
+ * 
+ * ~~~js
+ *  import { Scroll } from 'ease-develop'
+ * ~~~
+ */
 export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
   // 更好滑动实例
 	const [bScroll, setBScroll] = useState<BScrollType>(null)
@@ -82,7 +94,6 @@ export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
 
   // 初始化 bScroll 实例
   useEffect(() => {
-		console.log(scrollContainerRef.current)
     // 如果 scrollContainerRef 在初始化为空的时候 退出
     if (!scrollContainerRef.current) return
 
@@ -103,7 +114,7 @@ export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
 			// 重置 scroll TODO 为什么这里要 清空
       setBScroll(null)
     }
-  }, [scrollContainerRef])
+  }, [scrollContainerRef, bounceTop, bounceBottom, direction, click])
 
   // 处理 scroll 滚动
 	useEffect(() => {
@@ -139,7 +150,7 @@ export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
 			// 移除下拉事件
 			bScroll.off('touchEnd', handlePullDown)
 		}
-  }, [pullDown, bScroll])
+  }, [pullDown, bScroll, pullDownDebounce])
   
 
   // 处理 pullUp 上拉加载更多
@@ -151,7 +162,6 @@ export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
 		const handlePullUp = () => {
 			const { y, maxScrollY } = bScroll
 
-			console.log(y)		
 			// console.log({ y, maxScrollY }) // y => 当前 容器向上滑动的距离， 以及最大滑动距离
 			// 判断是否滑动底部 maxScrollY: 当前容器最大滑动 Y 值
 			if (y <= maxScrollY + 100) {
@@ -166,7 +176,7 @@ export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
 			// 移除上拉事件
 			bScroll.off('scrollEnd', handlePullUp)
 		}
-	}, [pullUp, bScroll])
+	}, [pullUp, bScroll, pullUpDebounce])
 
 	// 如果默认设置刷新，我们就进行刷新操作
 	useEffect(() => {
@@ -195,10 +205,10 @@ export const Scroll: FC<ScrollProps> = forwardRef((props, ref) => {
       { children }
       
       {/* 上拉加载组件 */}
-      { pullUpLoading && <div className="pull-up-loading">pullUpLoading</div> }
+      { pullUpLoading && <div className="pull-up-loading"><Loading.Ripple /></div> }
        
       {/* 下拉加载组件 */}
-      { pullDownLoading && <div className="pull-down-loading">pullDownLoading</div> }
+      { pullDownLoading && <div className="pull-down-loading"><Loading.JumpMusic /></div> }
     </div> 
   )
 })
