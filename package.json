@@ -1,7 +1,27 @@
 {
   "name": "ease-develop",
   "version": "0.1.0",
-  "private": true,
+  "description": "Make our development easy",
+  "private": false,
+  "author": "zengwei",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "React",
+    "develop"
+  ],
+  "homepage": "https://github.com/ITZengWei/ease-develop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ITZengWei/ease-develop"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -25,14 +45,18 @@
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint --ext js,ts,tsx src --max-warnings 10",
+    "clean": "rimraf ./dist",
+    "clean-node": "rimraf ./node_modules",
     "build": "react-scripts build",
+    "build-xxx": "npm run clean && npm run build-ts && npm run build-css",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "build-ts": "tsc -p tsconfig.build.json",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "prepublishOnly": "npm run lint && npm run test && npm run build"
+    "prepublishOnly": "npm run lint && npm run test:nowatch && npm run build"
   },
   "husky": {
     "hooks": {
@@ -65,6 +89,7 @@
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.8",
     "@types/better-scroll": "^1.12.3",
-    "node-sass": "^4.0.0"
+    "node-sass": "^4.0.0",
+    "rimraf": "^3.0.2"
   }
 }
